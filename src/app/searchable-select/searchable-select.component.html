@@ -1,0 +1,23 @@
+<mat-form-field>
+  <mat-select
+   [placeholder]="placeholder"
+   [compareWith]="compareWith"
+   [value]="value"
+   (valueChange)="valueChange.next($event)"
+   (selectionChange)="selectionChange.next($event)"
+   [title]="select.triggerValue"
+   #select
+  >
+    <mat-option>
+      <ngx-mat-select-search
+       [formControl]="filterControl"
+       [placeholderLabel]="placeholderLabel"
+       [noEntriesFoundLabel]="noEntriesFoundLabel"
+       [searching]="loading"
+      ></ngx-mat-select-search>
+    </mat-option>
+    <mat-option *ngFor="let item of data" [value]="item" [title]="itemLabelFn(item)">
+      {{itemLabelFn(item)}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
